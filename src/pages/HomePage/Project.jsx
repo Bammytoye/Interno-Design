@@ -4,90 +4,53 @@ import { MdArrowRight } from "react-icons/md";
 
 function Project() {
     return (
-        <div className=''>
-            <div className='p-24 flex flex-col gap-12'>
+        <div className='p-6 md:p-12 lg:p-24'>
+            <div className='flex flex-col gap-12'>
                 <div className='flex flex-col justify-center items-center gap-4 text-center'>
-                    <h2 className='font-semibold text-4xl'>
+                    <h2 className='font-semibold text-2xl md:text-3xl lg:text-4xl'>
                         Recent Projects
                     </h2>
 
-                    <p className='w-[600px]'>
+                    <p className='w-full md:w-[600px]'>
                         With tools to make every part of your process more human and a support team
-                        excited to help you, getting started with us never been easier.
+                        excited to help you, getting started with us has never been easier.
                     </p>
                 </div>
 
-                <div className='grid grid-cols-2 justify-between items-center gap-6'>
-                    <div>
-                        <Image src='/images/project1.png' alt='Project1' height={500} width={1300} />
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                    {[1, 2, 3, 4].map((project, index) => (
+                        <div key={index}>
+                            <Image src={`/images/project${project}.png`} alt={`Project${project}`} height={500} width={1300} className='w-full h-auto' />
 
-                        <div className='flex items-center justify-between mt-5'>
-                            <span>
-                                <p className='font-semibold text-lg'>Winery Dry Creek Building</p>
-                                <p className='text-gray-600'>Art Modern</p>
-                            </span>
-                            <MdArrowRight size={55} className='bg-[#f5c5a3] p-3 rounded-full' />
+                            <div className='flex items-center justify-between mt-5'>
+                                <span>
+                                    <p className='font-semibold text-lg'>
+                                        {project === 1 && "Winery Dry Creek Building"}
+                                        {project === 2 && "Creative Workplace Design"}
+                                        {project === 3 && "Bedroom Interior Pot Work"}
+                                        {project === 4 && "Light Ambience Sepia Design"}
+                                    </p>
+                                    <p className='text-gray-600'>
+                                        {project === 1 && "Art Modern"}
+                                        {project === 2 && "Minimalist"}
+                                        {project === 3 && "Modern"}
+                                        {project === 4 && "Scandinavian"}
+                                    </p>
+                                </span>
+                                <MdArrowRight size={40} className='bg-[#f5c5a3] p-2 rounded-full' />
+                            </div>
                         </div>
-                    </div>
-
-                    <div>
-                        <Image src='/images/project2.png' alt='Project1' height={500} width={1300} />
-
-                        <div className='flex items-center justify-between mt-5'>
-                            <span>
-                                <p className='font-semibold text-lg'>Creative Workplace Design</p>
-                                <p className='text-gray-600'>Minimalist</p>
-                            </span>
-                            <MdArrowRight size={55} className='bg-[#f5c5a3] p-3 rounded-full' />
-                        </div>
-                    </div>
-
-                    <div>
-                        <Image src='/images/project3.png' alt='Project1' height={500} width={1300} />
-
-                        <div className='flex items-center justify-between mt-5'>
-                            <span>
-                                <p className='font-semibold text-lg'>Bedroom Interior Pot Work</p>
-                                <p className='text-gray-600'>Modern</p>
-                            </span>
-                            <MdArrowRight size={55} className='bg-[#f5c5a3] p-3 rounded-full' />
-                        </div>
-                    </div>
-
-                    <div>
-                        <Image src='/images/project4.png' alt='Project1' height={500} width={1300} />
-
-                        <div className='flex items-center justify-between mt-5'>
-                            <span>
-                                <p className='font-semibold text-lg'>Light Ambience Sepia Design</p>
-                                <p className='text-gray-600'>Scandinavian</p>
-                            </span>
-                            <MdArrowRight size={55} className='bg-[#f5c5a3] p-3 rounded-full' />
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 
-            <div className='bg-[#f7f0eb] p-16 flex justify-center items-center space-x-10'>
-                <div className='text-center space-y-6'>
-                    <p className='text-[#faba8d] text-7xl font-bold'>12</p>
-                    <p className='text-gray-700'>Years of Experience</p>
-                </div>
-
-                <div className='border-l-2 border-[#f7dbc7] px-10 space-y-4 text-center'>
-                    <p className='text-[#faba8d] text-7xl font-bold'>5k</p>
-                    <p className='text-gray-700'>Success Project</p>
-                </div>
-
-                <div className='border-l-2 border-[#f7dbc7] px-10 space-y-4 text-center'>
-                    <p className='text-[#faba8d] text-7xl font-bold'>1k</p>
-                    <p className='text-gray-700'>Active Project</p>
-                </div>
-
-                <div className='border-l-2 border-[#f7dbc7] px-10 space-y-4 text-center'>
-                    <p className='text-[#faba8d] text-7xl font-bold'>4k</p>
-                    <p className='text-gray-700'>Happy Customers</p>
-                </div>
+            <div className='lg:bg-[#f7f0eb] p-6 md:p-12 lg:p-16 mt-10 grid lg:grid-cols-4 justify-center items-center space-y-6 md:space-y-0 md:space-x-10'>
+                {[{ number: "12", label: "Years of Experience" }, { number: "5k", label: "Success Project" }, { number: "1k", label: "Active Project" }, { number: "4k", label: "Happy Customers" }].map((item, index) => (
+                    <div key={index} className={`text-center space-y-4 ${index !== 0 ? 'lg:border-l-2 border-b-2 border-[#f7dbc7] pb-6 lg:px-6 md:px-10' : ''}`}>
+                        <p className='text-[#faba8d] text-5xl md:text-6xl lg:text-7xl font-bold'>{item.number}</p>
+                        <p className='text-gray-700'>{item.label}</p>
+                    </div>
+                ))}
             </div>
         </div>
     )
