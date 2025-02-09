@@ -6,12 +6,17 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '960px',
+      xl: '1200px',
     },
+    backgroundImage: {
+      hero: 'url(/images/hero.png)',
+      grid: 'url(/images/hero2.png)',
+    },
+    extend: {},
   },
   plugins: [],
 };
